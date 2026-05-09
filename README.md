@@ -20,7 +20,7 @@ A configurable, Ultimate multi-line footer/statusline extension for [`pi`](https
 <details>
 <summary>Click to expand video</summary>
 
-https://github.com/user-attachments/assets/abba51c6-9880-4bde-b7fa-849544b07329
+<video src="https://github.com/user-attachments/assets/abba51c6-9880-4bde-b7fa-849544b07329" controls muted width="100%"></video>
 
 </details>
 
