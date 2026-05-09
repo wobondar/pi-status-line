@@ -1,0 +1,21 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: deps
+      include: scope
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: deps
+      include: scope
+    ignore:
+      - dependency-name: "@types/*"
+        update-types: ["version-update:semver-patch"]

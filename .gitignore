@@ -1,0 +1,11 @@
+node_modules
+coverage/
+dist/
+tmp/
+.DS_Store
+.env
+.env.*
+.vscode
+.scratch/
+.pi/
+.idea

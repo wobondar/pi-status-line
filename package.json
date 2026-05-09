@@ -1,0 +1,67 @@
+{
+  "name": "pi-status-line",
+  "version": "0.0.1",
+  "description": "Configurable, Ultimate multi-line footer/statusline extension for pi",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "statusline",
+    "pi-statusline",
+    "pi-status-line",
+    "footer",
+    "tui"
+  ],
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ],
+    "video": "https://raw.githubusercontent.com/wobondar/pi-status-line/main/assets/demo-video.mp4",
+    "image": "https://raw.githubusercontent.com/wobondar/pi-status-line/main/assets/demo-teaser.gif"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/wobondar/pi-status-line#readme",
+  "bugs": {
+    "url": "https://github.com/wobondar/pi-status-line/issues"
+  },
+  "license": "MIT",
+  "author": "wobondar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wobondar/pi-status-line.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run typecheck && npm run fmt:check && npm run lint && npm run test"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@vitest/coverage-v8": "^4.1.5",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
+    "oxlint-tsgolint": "^0.22.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}
