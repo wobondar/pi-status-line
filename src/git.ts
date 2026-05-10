@@ -5,7 +5,12 @@ import type { GitInfo } from "./types.js";
 
 const CACHE_TTL_MS = 2000;
 
-const EMPTY_GIT_INFO: GitInfo = {
+interface GitCacheEntry {
+  timestamp: number;
+  info: GitInfo;
+}
+
+export const EMPTY_GIT_INFO: GitInfo = {
   branch: null,
   sha: null,
   root: null,
@@ -20,14 +25,24 @@ const EMPTY_GIT_INFO: GitInfo = {
   isRepo: false,
 };
 
-const cache = new Map<string, { timestamp: number; info: GitInfo }>();
+const cache = new Map<string, GitCacheEntry>();
 
 export function getGitInfo(cwd: string, branchHint: string | null): GitInfo {
-  const cached = cache.get(cwd);
-  if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) return cached.info;
+  const now = Date.now();
+  const cached = freshCache(cache.get(cwd), now, branchHint);
+  if (cached) return cached.info;
 
   const rootPath = git(cwd, ["rev-parse", "--show-toplevel"]);
-  if (!rootPath) return EMPTY_GIT_INFO;
+  if (!rootPath) {
+    cache.set(cwd, { timestamp: now, info: EMPTY_GIT_INFO });
+    return EMPTY_GIT_INFO;
+  }
+
+  const rootCached = freshCache(cache.get(rootPath), now, branchHint);
+  if (rootCached) {
+    cache.set(cwd, rootCached);
+    return rootCached.info;
+  }
 
   const info: GitInfo = {
     branch: branchHint ?? git(cwd, ["rev-parse", "--abbrev-ref", "HEAD"]),
@@ -40,8 +55,21 @@ export function getGitInfo(cwd: string, branchHint: string | null): GitInfo {
     isRepo: true,
   };
 
-  cache.set(cwd, { timestamp: Date.now(), info });
+  const entry = { timestamp: Date.now(), info };
+  cache.set(rootPath, entry);
+  cache.set(cwd, entry);
   return info;
+}
+
+function freshCache(
+  cached: GitCacheEntry | undefined,
+  now: number,
+  branchHint: string | null,
+): GitCacheEntry | undefined {
+  if (!cached || now - cached.timestamp >= CACHE_TTL_MS) return undefined;
+  if (!cached.info.isRepo) return cached;
+  if (branchHint !== null && cached.info.branch !== branchHint) return undefined;
+  return cached;
 }
 
 function git(cwd: string, args: string[]): string | null {

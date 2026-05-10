@@ -12,11 +12,12 @@ import {
   EMPTY_EXTENSION_STATUSES,
   visibleExtensionStatusRowEntries,
 } from "./extension-statuses.js";
-import { getGitInfo } from "./git.js";
+import { EMPTY_GIT_INFO, getGitInfo } from "./git.js";
 import { collectSessionMetrics } from "./metrics.js";
 import { renderStatuslines } from "./render.js";
 import type { StatuslineConfig, StatuslineData, StatuslinePreset } from "./types.js";
 import { openStatuslineConfigUi } from "./ui.js";
+import { hasEnabledGitWidgets } from "./widget-groups.js";
 
 interface FooterDataLike {
   getGitBranch(): string | null;
@@ -48,7 +49,9 @@ export default async function statuslineExtension(pi: ExtensionAPI): Promise<voi
         },
         invalidate(): void {},
         render(width: number): string[] {
-          const data = collectStatuslineData(ctx, pi, footerData, eventWidgets.values);
+          const data = collectStatuslineData(ctx, pi, footerData, eventWidgets.values, {
+            config,
+          });
           const lines = renderStatuslines(config, data, width, { getExtensionStatuses, theme });
           if (lines.length === 0) return [];
 
@@ -95,6 +98,7 @@ export default async function statuslineExtension(pi: ExtensionAPI): Promise<voi
           getGitBranch: () => "main",
         },
         eventWidgets.values,
+        { collectGit: true },
       );
       const result = await openStatuslineConfigUi(
         ctx,
@@ -132,8 +136,11 @@ function collectStatuslineData(
   pi: ExtensionAPI,
   footerData: Pick<FooterDataLike, "getGitBranch">,
   eventWidgets: ReadonlyMap<string, string>,
+  options: { config?: StatuslineConfig; collectGit?: boolean } = {},
 ): StatuslineData {
   const contextUsage = ctx.getContextUsage();
+  const collectGit =
+    options.collectGit ?? (options.config ? hasEnabledGitWidgets(options.config) : true);
   return {
     model: ctx.model?.id,
     provider: ctx.model?.provider,
@@ -141,7 +148,7 @@ function collectStatuslineData(
     sessionId: ctx.sessionManager.getSessionId(),
     thinkingLevel: ctx.model?.reasoning ? pi.getThinkingLevel() : undefined,
     textVerbosity: getTextVerbosity(ctx.model),
-    git: getGitInfo(ctx.cwd, footerData.getGitBranch()),
+    git: collectGit ? getGitInfo(ctx.cwd, footerData.getGitBranch()) : EMPTY_GIT_INFO,
     cwd: ctx.cwd,
     activeToolCount: pi.getActiveTools().length,
     usingSubscription: ctx.model ? ctx.modelRegistry.isUsingOAuth(ctx.model) : false,
