@@ -29,10 +29,10 @@ afterEach(async () => {
 describe("config", () => {
   it("uses pi agent extension config path by default and supports env override", () => {
     delete process.env.PI_STATUSLINE_CONFIG;
-    expect(getConfigPath()).toBe(join(getAgentDir(), "extensions", "pi-status-line.json"));
+    expect(getConfigPath()).toBe(join(getAgentDir(), "extensions", "pi-footer.json"));
 
-    process.env.PI_STATUSLINE_CONFIG = "/tmp/custom-statusline.json";
-    expect(getConfigPath()).toBe("/tmp/custom-statusline.json");
+    process.env.PI_STATUSLINE_CONFIG = "/tmp/custom-pi-footer.json";
+    expect(getConfigPath()).toBe("/tmp/custom-pi-footer.json");
   });
 
   it("normalizes line widget arrays and preserves duplicates", () => {
@@ -337,7 +337,7 @@ describe("config", () => {
   });
 
   it("loads defaults when config does not exist", async () => {
-    tempDir = await mkdtemp(join(tmpdir(), "pi-status-line-"));
+    tempDir = await mkdtemp(join(tmpdir(), "pi-footer-"));
     const config = await loadConfig(join(tempDir, "missing.json"));
     expect(config.lines[0]?.map((widget) => widget.type)).toEqual(
       DEFAULT_CONFIG.lines[0]?.map((widget) => widget.type),
@@ -351,7 +351,7 @@ describe("config", () => {
   });
 
   it("saves normalized config", async () => {
-    tempDir = await mkdtemp(join(tmpdir(), "pi-status-line-"));
+    tempDir = await mkdtemp(join(tmpdir(), "pi-footer-"));
     const path = join(tempDir, "settings.json");
     await saveConfig({ ...DEFAULT_CONFIG, lines: [[createWidget("model")]] }, path);
     const saved = JSON.parse(await readFile(path, "utf8")) as {

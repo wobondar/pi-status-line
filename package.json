@@ -1,5 +1,5 @@
 {
-  "name": "pi-status-line",
+  "name": "pi-footer",
   "version": "0.1.0",
   "description": "Configurable, Ultimate multi-line footer/statusline extension for pi",
   "type": "module",
@@ -8,7 +8,7 @@
     "pi-extension",
     "statusline",
     "pi-statusline",
-    "pi-status-line",
+    "pi-footer",
     "footer",
     "tui"
   ],
@@ -16,8 +16,8 @@
     "extensions": [
       "./src/index.ts"
     ],
-    "video": "https://raw.githubusercontent.com/wobondar/pi-status-line/main/assets/demo-video.mp4",
-    "image": "https://raw.githubusercontent.com/wobondar/pi-status-line/main/assets/demo-teaser.gif"
+    "video": "https://raw.githubusercontent.com/wobondar/pi-footer/main/assets/demo-video.mp4",
+    "image": "https://raw.githubusercontent.com/wobondar/pi-footer/main/assets/demo-teaser.gif"
   },
   "files": [
     "src/",
@@ -25,15 +25,15 @@
     "CHANGELOG.md",
     "LICENSE"
   ],
-  "homepage": "https://github.com/wobondar/pi-status-line#readme",
+  "homepage": "https://github.com/wobondar/pi-footer#readme",
   "bugs": {
-    "url": "https://github.com/wobondar/pi-status-line/issues"
+    "url": "https://github.com/wobondar/pi-footer/issues"
   },
   "license": "MIT",
   "author": "wobondar",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wobondar/pi-status-line.git"
+    "url": "git+https://github.com/wobondar/pi-footer.git"
   },
   "publishConfig": {
     "access": "public"

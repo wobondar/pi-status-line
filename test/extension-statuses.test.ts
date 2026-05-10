@@ -28,7 +28,7 @@ const data: StatuslineData = {
   git: {
     branch: "main",
     sha: "abc1234",
-    root: "pi-status-line",
+    root: "pi-footer",
     staged: 0,
     unstaged: 0,
     untracked: 0,
@@ -39,7 +39,7 @@ const data: StatuslineData = {
     remote: null,
     isRepo: true,
   },
-  cwd: "/Users/example/projects/pi-status-line",
+  cwd: "/Users/example/projects/pi-footer",
   activeToolCount: 0,
   usingSubscription: false,
   contextTokens: 25_000,
@@ -62,7 +62,7 @@ const data: StatuslineData = {
 };
 
 describe("extension status helpers", () => {
-  it("returns sorted non-empty extension statuses except the statusline itself", () => {
+  it("returns sorted non-empty extension statuses except the pi-footer itself", () => {
     expect(
       extensionStatusEntries(
         new Map([

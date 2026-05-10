@@ -21,7 +21,7 @@ export class ConfirmExitScreen extends Controller {
       ),
       this.render.line(this.ctx.theme.dim(CONFIRM_EXIT_HINT), width),
       this.render.line(
-        this.ctx.theme.warning("You have unsaved statusline configuration changes."),
+        this.ctx.theme.warning("You have unsaved pi-footer configuration changes."),
         width,
       ),
       ...CONFIRM_EXIT_ITEMS.map((item, index) =>

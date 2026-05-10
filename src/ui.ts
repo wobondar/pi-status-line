@@ -39,7 +39,7 @@ export async function openStatuslineConfigUi(
               await onSave(finalConfig);
             } catch (error) {
               ctx.ui.notify(
-                `Could not save statusline config: ${error instanceof Error ? error.message : String(error)}`,
+                `Could not save pi-footer config: ${error instanceof Error ? error.message : String(error)}`,
                 "error",
               );
               throw error;

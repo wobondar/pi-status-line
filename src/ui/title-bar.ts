@@ -3,7 +3,7 @@ import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
 import { VERSION } from "../version.js";
 import { retroText } from "./gradient.js";
 
-export const CONFIG_TITLE_TEXT = " pi-status-line configuration ";
+export const CONFIG_TITLE_TEXT = " pi-footer configuration ";
 
 export interface ConfigTitleBarParts {
   title: string;

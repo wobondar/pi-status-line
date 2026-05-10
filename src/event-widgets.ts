@@ -1,6 +1,6 @@
 import { isRecord } from "./utils.js";
 
-export const UPDATE_EVENT_WIDGET_EVENT = "pi-status-line:update-widget";
+export const UPDATE_EVENT_WIDGET_EVENT = "pi-footer:update-widget";
 
 export interface UpdateEventWidgetPayload {
   widgetId: string;

@@ -19,7 +19,7 @@ export class GlobalScreen extends Controller {
     const fields = globalMenuFields(this.ctx.state.config);
     return [
       this.render.line(
-        this.render.menuTitle("Global Overrides", "Configure global settings for the statusline"),
+        this.render.menuTitle("Global Overrides", "Configure global settings for the pi-footer"),
         width,
       ),
       this.render.line(this.ctx.theme.dim(GLOBAL_MENU_HINT), width),

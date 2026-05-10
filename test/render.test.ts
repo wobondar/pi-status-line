@@ -44,7 +44,7 @@ const data: StatuslineData = {
   git: {
     branch: "main",
     sha: "abc1234",
-    root: "pi-status-line",
+    root: "pi-footer",
     staged: 1,
     unstaged: 2,
     untracked: 3,
@@ -52,10 +52,10 @@ const data: StatuslineData = {
     deletions: 4,
     ahead: 1,
     behind: 0,
-    remote: "git@github.com:example/pi-status-line.git",
+    remote: "git@github.com:example/pi-footer.git",
     isRepo: true,
   },
-  cwd: "/Users/example/projects/pi-status-line",
+  cwd: "/Users/example/projects/pi-footer",
   activeToolCount: 4,
   usingSubscription: false,
   contextTokens: 25_000,
@@ -98,7 +98,7 @@ describe("renderStatusline", () => {
       100,
     );
 
-    expect(lines[0]).toBe("~/projects/pi-status-line (main) • demo");
+    expect(lines[0]).toBe("~/projects/pi-footer (main) • demo");
     expect(lines[1]).toContain("↑12k ↓6.8k $0.123 25%/100k");
     expect(lines[1]).toContain("claude-sonnet-4-5 • high");
     expect(visibleWidth(lines[1] ?? "")).toBe(100);
@@ -149,7 +149,7 @@ describe("renderStatusline", () => {
     );
 
     expect(line).toContain("anthropic/claude-sonnet-4-5");
-    expect(line).toContain("git@github.com:example/pi-status-line.git");
+    expect(line).toContain("git@github.com:example/pi-footer.git");
     expect(line).toContain("hello");
     expect(line).toContain("+10/-4");
     expect(line).toContain("2u/2a/3t");
@@ -394,7 +394,7 @@ describe("renderStatusline", () => {
         data,
         200,
       ),
-    ).toBe("~/…/projects/pi-status-line");
+    ).toBe("~/…/projects/pi-footer");
 
     expect(
       renderStatusline(
@@ -405,7 +405,7 @@ describe("renderStatusline", () => {
         data,
         200,
       ),
-    ).toBe("~/projects/pi-status-line");
+    ).toBe("~/projects/pi-footer");
 
     expect(
       renderStatusline(
@@ -416,7 +416,7 @@ describe("renderStatusline", () => {
         data,
         200,
       ),
-    ).toBe("~/p/pi-status-line");
+    ).toBe("~/p/pi-footer");
   });
 
   it("renders conditional context colors", () => {
@@ -918,9 +918,7 @@ describe("format helpers", () => {
     process.env.HOME = "/Users/example";
 
     expect(shortenPath("/a/b/c/d", 2)).toBe("…/c/d");
-    expect(fullHomePath("/Users/example/projects/pi-status-line")).toBe(
-      "~/projects/pi-status-line",
-    );
-    expect(fishStylePath("/Users/example/projects/pi-status-line", 1)).toBe("~/p/pi-status-line");
+    expect(fullHomePath("/Users/example/projects/pi-footer")).toBe("~/projects/pi-footer");
+    expect(fishStylePath("/Users/example/projects/pi-footer", 1)).toBe("~/p/pi-footer");
   });
 });

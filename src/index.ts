@@ -35,7 +35,7 @@ export default async function statuslineExtension(pi: ExtensionAPI): Promise<voi
       return;
     }
 
-    ctx.ui.setStatus(STATUS_KEY, ctx.ui.theme.fg("accent", "statusline"));
+    ctx.ui.setStatus(STATUS_KEY, ctx.ui.theme.fg("accent", "pi-footer"));
     ctx.ui.setFooter((tui, theme, footerData) => {
       getExtensionStatuses = () => footerData.getExtensionStatuses();
       renderCurrentFooter = () => tui.requestRender();
@@ -82,7 +82,7 @@ export default async function statuslineExtension(pi: ExtensionAPI): Promise<voi
     if (changed) renderCurrentFooter?.();
   });
 
-  pi.registerCommand("statusline", {
+  pi.registerCommand("footer", {
     description: "Configure the pi statusline/footer",
     handler: async (args, ctx) => {
       const handled = await handleArgs(args, ctx, config, async (next) => setConfig(next, ctx));
@@ -163,27 +163,27 @@ async function handleArgs(
 
   if (command === "on" || command === "enable") {
     await setConfig({ ...currentConfig, enabled: true });
-    ctx.ui.notify("Statusline enabled", "info");
+    ctx.ui.notify("pi-footer enabled", "info");
     return true;
   }
   if (command === "off" || command === "disable") {
     await setConfig({ ...currentConfig, enabled: false });
-    ctx.ui.notify("Statusline disabled", "info");
+    ctx.ui.notify("pi-footer disabled", "info");
     return true;
   }
   if (command === "reset") {
     await setConfig(cloneConfig(DEFAULT_CONFIG));
-    ctx.ui.notify("Statusline reset to defaults", "info");
+    ctx.ui.notify("pi-footer reset to defaults", "info");
     return true;
   }
   if (command === "preset" && isPreset(value)) {
     await setConfig(configWithPreset(currentConfig, value));
-    ctx.ui.notify(`Statusline preset: ${value}`, "info");
+    ctx.ui.notify(`pi-footer preset: ${value}`, "info");
     return true;
   }
 
   ctx.ui.notify(
-    "Usage: /statusline [on|off|reset|preset compact|default|powerline|powerline-bright|powerline-blocks|powerline-mono|git-heavy|pi-footer|demo|demo-standard]",
+    "Usage: /footer [on|off|reset|preset compact|default|powerline|powerline-bright|powerline-blocks|powerline-mono|git-heavy|pi-footer|demo|demo-standard]",
     "warning",
   );
   return true;

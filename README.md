@@ -1,12 +1,12 @@
-# pi-status-line
+# pi-footer
 
 A configurable, Ultimate multi-line footer/statusline extension for [`pi`](https://pi.dev).
 
-![pi-status-line](assets/statusline-custom.png)
+![pi-footer](assets/statusline-custom.png)
 
-`pi-status-line` is built for people who live in the terminal and want their agent UI to expose useful state at a glance: model, provider, context, tokens, cost, git state, session activity, extension statuses, and custom values published by other extensions.
+`pi-footer` is built for people who live in the terminal and want their agent UI to expose useful state at a glance: model, provider, context, tokens, cost, git state, session activity, extension statuses, and custom values published by other extensions.
 
-![pi-status-line teaser](assets/demo-teaser.gif)
+![pi-footer teaser](assets/demo-teaser.gif)
 
 ## Why use it?
 
@@ -29,13 +29,13 @@ A configurable, Ultimate multi-line footer/statusline extension for [`pi`](https
 Install extension from npm:
 
 ```bash
-pi install npm:pi-status-line
+pi install npm:pi-footer
 ```
 
 Try it for one run without installing:
 
 ```bash
-pi -e npm:pi-status-line
+pi -e npm:pi-footer
 ```
 
 Local development checkout:
@@ -50,35 +50,35 @@ pi -e ./src/index.ts
 Open the configuration UI:
 
 ```text
-/statusline
+/footer
 ```
 
 Try a preset:
 
 ```text
-/statusline preset powerline
-/statusline preset powerline-bright
-/statusline preset powerline-blocks
-/statusline preset powerline-mono
-/statusline preset pi-footer
-/statusline preset compact
+/footer preset powerline
+/footer preset powerline-bright
+/footer preset powerline-blocks
+/footer preset powerline-mono
+/footer preset pi-footer
+/footer preset compact
 ```
 
 Other quick commands:
 
 ```text
-/statusline on
-/statusline off
-/statusline reset
+/footer on
+/footer off
+/footer reset
 ```
 
 Settings are persisted to:
 
 ```text
-~/.pi/agent/extensions/pi-status-line.json
+~/.pi/agent/extensions/pi-footer.json
 ```
 
-Override with `PI_STATUSLINE_CONFIG=/path/to/settings.json`.
+Override with `PI_FOOTER_CONFIG=/path/to/settings.json`.
 
 ## Presets
 
@@ -112,12 +112,12 @@ Powerline presets look best with a Nerd Font-compatible terminal font.
 ## Configuration UI
 
 ```text
-/statusline
+/footer
 ```
 
 Main menu:
 
-- **Edit lines** — add, clone, move, delete, and select statusline rows.
+- **Edit lines** — add, clone, move, delete, and select pi-footer rows.
 - **Edit colors** — choose a line, then configure widget foreground/background/bold.
 - **Terminal Options** — configure terminal width behavior and color level.
 - **Global Overrides** — choose presets, separators, icon mode, minimalist mode, and global separator colors.
@@ -159,7 +159,7 @@ Widgets are instance-based. You can add the same widget multiple times, clone it
 
 Every non-layout widget supports common options: **Enabled**, **Raw value only**, **Hide when empty** where relevant, **Custom icon**, foreground/background/bold colors, and ANSI256 overrides.
 
-The **Value example** column shows the widget value before labels/icons and colors are applied. In normal mode, statusline prefixes non-layout widgets with the selected emoji, Nerd Font icon, text label, or custom icon. `Raw value only` and minimalist mode render the raw value directly.
+The **Value example** column shows the widget value before labels/icons and colors are applied. In normal mode, pi-footer prefixes non-layout widgets with the selected emoji, Nerd Font icon, text label, or custom icon. `Raw value only` and minimalist mode render the raw value directly.
 
 ### Core widgets
 
@@ -171,8 +171,8 @@ The **Value example** column shows the widget value before labels/icons and colo
 | `Thinking Level` | Current pi thinking/reasoning level. Hidden when unavailable. | — | `high` |
 | `Text Verbosity` | Text verbosity for providers that expose it. Hidden when unavailable. | — | `low` |
 | `Context Window` | Model context window size. | Token format, hide when zero. | `200k` |
-| `Working Dir` | Current working directory. | Display style: default, full `~`, fish-style; segment count. | `~/…/projects/pi-status-line` |
-| `Working Dir Name` | Basename of current working directory. | — | `pi-status-line` |
+| `Working Dir` | Current working directory. | Display style: default, full `~`, fish-style; segment count. | `~/…/projects/pi-footer` |
+| `Working Dir Name` | Basename of current working directory. | — | `pi-footer` |
 | `Session Name` | pi session display name. | Text when empty, hide when empty. | `release prep` |
 | `Active Tools` | Count of active tools. | — | `4` |
 | `Pi Event Value` | Value published through `pi.events`. | Widget ID, text when empty, hide when empty. | `on` |
@@ -219,7 +219,7 @@ The **Value example** column shows the widget value before labels/icons and colo
 | --- | --- | --- | --- |
 | `Git Branch` | Current Git branch. | Display: plain, round brackets, custom surround; hide when empty. | `main` or `(main)` |
 | `Git SHA` | Short `HEAD` commit SHA. | Hide when empty. | `a1b2c3d` |
-| `Git Root Dir` | Repository root directory name. | Hide when empty. | `pi-status-line` |
+| `Git Root Dir` | Repository root directory name. | Hide when empty. | `pi-footer` |
 | `Git Status` | Staged, unstaged, and untracked file counts. | Hide when empty. | `+2 ±3 ?1` |
 | `Git Diff` | Uncommitted insertion/deletion summary. | Display: plain or compact; hide when empty. | `+42/-10` or `(+42,-10)` |
 | `Git Clean Status` | Clean/dirty repository state. | Hide when empty. | `clean` or `dirty` |
@@ -281,13 +281,13 @@ Powerline-oriented separator widget styles include hard transitions, soft transi
 ### Terminal width modes
 
 - `Full width always`
-- `Full width minus 40` - truncates the statusline to fit within `terminal width - 40` columns.
+- `Full width minus 40` - truncates the pi-footer to fit within `terminal width - 40` columns.
 
 The `compact` preset uses `Full width minus 40`; other presets use full width.
 
 ## Extension integration
 
-`pi-status-line` exposes two integration paths for extension authors.
+`pi-footer` exposes two integration paths for extension authors.
 
 ### 1. Event widgets
 
@@ -296,7 +296,7 @@ Add a `Pi Event Value` widget and set its `Widget ID` to a stable value, for exa
 Other extensions can update that widget through pi's shared event bus:
 
 ```typescript
-pi.events.emit("pi-status-line:update-widget", {
+pi.events.emit("pi-footer:update-widget", {
   widgetId: "fast_mode",
   value: "on",
 });
@@ -305,7 +305,7 @@ pi.events.emit("pi-status-line:update-widget", {
 Clear a previously published value by sending `null`:
 
 ```typescript
-pi.events.emit("pi-status-line:update-widget", {
+pi.events.emit("pi-footer:update-widget", {
   widgetId: "fast_mode",
   value: null,
 });
@@ -328,7 +328,7 @@ Users can display that value in two ways:
 - add a `Pi Extension Status` widget and set `Status key` to `my-extension`
 - show/hide it in the `Pi extensions` menu for the extension status row
 
-Multiple widgets may point at the same status key. `pi-status-line` does not auto-hide or deduplicate extension statuses; the user controls what appears.
+Multiple widgets may point at the same status key. `pi-footer` does not auto-hide or deduplicate extension statuses; the user controls what appears.
 
 Use **Trim value** on a `Pi Extension Status` widget to remove leading visible characters from the published status. For example, trim `2` turns `● On`, `● Enabled`, or `◌ Disabled` into `On`, `Enabled`, or `Disabled`. **Preserve trim styles** is enabled by default, so whole-status ANSI styling is replayed after the trimmed prefix; turn it off to drop styling that was attached only to the trimmed prefix.
 

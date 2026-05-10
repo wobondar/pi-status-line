@@ -5,7 +5,7 @@ import { fieldsForWidget } from "../src/ui/fields.js";
 import { adjustAnsi, clamp, cycle, escapeTarget, isPrintable, wrap } from "../src/ui/helpers.js";
 import { pageSelection, rangeLabel, scrollWindow } from "../src/ui/navigation.js";
 
-describe("statusline UI fields", () => {
+describe("pi-footer UI fields", () => {
   it("hides raw, empty, and icon options for separator widgets", () => {
     expect(fieldsForWidget(createWidget("separator")).map((field) => field.id)).toEqual([
       "enabled",
@@ -38,7 +38,7 @@ describe("statusline UI fields", () => {
   });
 });
 
-describe("statusline UI navigation helpers", () => {
+describe("pi-footer UI navigation helpers", () => {
   it("pages selections within bounds", () => {
     expect(pageSelection(5, 10, 4, -1)).toBe(1);
     expect(pageSelection(5, 10, 4, 1)).toBe(9);
@@ -61,7 +61,7 @@ describe("statusline UI navigation helpers", () => {
   });
 });
 
-describe("statusline UI navigation", () => {
+describe("pi-footer UI navigation", () => {
   it("returns from widget editing to line selection", () => {
     expect(escapeTarget("widget-list")).toBe("line-list");
     expect(escapeTarget("edit-widget")).toBe("widget-list");

@@ -35,7 +35,7 @@ import { defaultWidgetForeground } from "./widget-defaults.js";
 import { isContextWidget, isTokenFormatWidget } from "./widget-groups.js";
 
 const CONFIG_ENV = "PI_STATUSLINE_CONFIG";
-const DEFAULT_CONFIG_PATH = join(getAgentDir(), "extensions", "pi-status-line.json");
+const DEFAULT_CONFIG_PATH = join(getAgentDir(), "extensions", "pi-footer.json");
 const ALL_WIDGET_TYPES = new Set<WidgetType>(WIDGET_DEFINITIONS.map((widget) => widget.type));
 
 const SEPARATORS = new Set<SeparatorStyle>(SEPARATOR_VALUES);

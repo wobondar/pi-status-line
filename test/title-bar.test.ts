@@ -60,6 +60,6 @@ describe("config title bar", () => {
   });
 
   it("exports the title text in one place", () => {
-    expect(CONFIG_TITLE_TEXT).toBe(" pi-status-line configuration ");
+    expect(CONFIG_TITLE_TEXT).toBe(" pi-footer configuration ");
   });
 });

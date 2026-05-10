@@ -23,7 +23,7 @@ const previewData = {
   git: {
     branch: "main",
     sha: "abc1234",
-    root: "pi-status-line",
+    root: "pi-footer",
     staged: 0,
     unstaged: 0,
     untracked: 0,
@@ -34,7 +34,7 @@ const previewData = {
     remote: null,
     isRepo: true,
   },
-  cwd: "/tmp/pi-status-line",
+  cwd: "/tmp/pi-footer",
   activeToolCount: 0,
   usingSubscription: false,
   contextTokens: 0,
@@ -76,7 +76,7 @@ describe("OverlayRender", () => {
 
     expect(plain).toContain("Preview");
     expect(plain).toContain("claude-sonnet-4-5");
-    expect(plain).toContain("pi-status-line configuration");
+    expect(plain).toContain("pi-footer configuration");
     expect(plain).toContain("Saved");
     expect(plain).toContain("body line");
     expect(lines).toHaveLength(12);
