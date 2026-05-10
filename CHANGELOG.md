@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/wobondar/pi-footer/compare/v0.2.1...v0.3.0) (2026-05-10)
+
+
+### Features
+
+* enhance git info caching ([3963e69](https://github.com/wobondar/pi-footer/commit/3963e69286f95514df212acae69470d4d9fea00a))
+
 ## [0.2.1](https://github.com/wobondar/pi-footer/compare/v0.2.0...v0.2.1) (2026-05-10)
 
 
