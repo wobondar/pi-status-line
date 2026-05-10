@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/wobondar/pi-footer/compare/v0.1.0...v0.2.0) (2026-05-10)
+
+
+### Features
+
+* rebrand to pi-footer due to npm similarity with existing package ([cceba8c](https://github.com/wobondar/pi-footer/commit/cceba8ce838d7f4fc4b2653d5bfeea4f39eb19f2))
+
+
+### Bug Fixes
+
+* enable npm publish with provenance ([39e3709](https://github.com/wobondar/pi-footer/commit/39e3709c769a7911b4c1fb0ea79759e67e55b29c))
+
 ## [0.1.0](https://github.com/wobondar/pi-footer/compare/v0.0.1...v0.1.0) (2026-05-09)
 
 
