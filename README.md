@@ -2,11 +2,11 @@
 
 A configurable, Ultimate multi-line footer/statusline extension for [`pi`](https://pi.dev).
 
-![pi-footer](assets/statusline-custom.png)
+![pi-footer](https://raw.githubusercontent.com/wobondar/pi-footer/main/assets/statusline-custom.png)
 
 `pi-footer` is built for people who live in the terminal and want their agent UI to expose useful state at a glance: model, provider, context, tokens, cost, git state, session activity, extension statuses, and custom values published by other extensions.
 
-![pi-footer teaser](assets/demo-teaser.gif)
+![pi-footer teaser](https://raw.githubusercontent.com/wobondar/pi-footer/main/assets/demo-teaser.gif)
 
 ## Why use it?
 
@@ -99,11 +99,11 @@ Presets are starting points. After applying one, you can edit lines, widgets, se
 
 **demo preset:**
 
-![Demo preset gallery](assets/preset-demo.png)
+![Demo preset gallery](https://raw.githubusercontent.com/wobondar/pi-footer/main/assets/preset-demo.png)
 
 **demo-standard preset:**
 
-![Demo standard preset gallery](assets/preset-demo-standard.png)
+![Demo standard preset gallery](https://raw.githubusercontent.com/wobondar/pi-footer/main/assets/preset-demo-standard.png)
 
 The `pi-footer` preset is intended to look like pi's built-in footer while staying editable. It follows the active pi theme.
 
