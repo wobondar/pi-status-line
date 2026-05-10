@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/wobondar/pi-footer/compare/v0.2.0...v0.2.1) (2026-05-10)
+
+
+### Bug Fixes
+
+* update image links to use raw GitHub URLs ([804c8c2](https://github.com/wobondar/pi-footer/commit/804c8c2a91224604dd4177eb6b9ea0e9ff9b0af7))
+
 ## [0.2.0](https://github.com/wobondar/pi-footer/compare/v0.1.0...v0.2.0) (2026-05-10)
 
 
