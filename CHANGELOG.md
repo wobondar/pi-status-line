@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/wobondar/pi-footer/compare/v0.3.0...v0.3.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* enable manual triggering of release workflow ([0c1f8d8](https://github.com/wobondar/pi-footer/commit/0c1f8d84e41f4224a6e0dc131ab665610dd489ca))
+
 ## [0.3.0](https://github.com/wobondar/pi-footer/compare/v0.2.1...v0.3.0) (2026-05-10)
 
 
